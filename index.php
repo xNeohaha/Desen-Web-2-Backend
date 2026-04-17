@@ -8,8 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST["nome"] ?? "";
     $email = $_POST["email"] ?? "";
     $telefone = $_POST["telefone"] ?? "";
-    $date= $_POST["dataNascimento"] ?? "";
-    $cpf= $_POST["CPF"] ?? "";
+    $dataNascimento = $_POST["dataNascimento"] ?? "";
+    $cpf= $_POST["cpf"] ?? "";
 }
 ?>
 <!DOCTYPE html>
@@ -31,21 +31,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <input id="email" name="email" placeholder="Email" required><br><br>
           <input id="telefone" name="telefone" placeholder="Telefone" required><br><br>
           <input id="cpf" name="cpf" placeholder="CPF" required><br><br>
-          <input type="date" id="dataNascimento" name="dataNascimento" required><br><br>
+          <input type="date" name="dataNascimento" required><br><br>
           <button type="submit">Enviar</button>
+
           <p id="mensagem"></p> <!-- Placeholder de Mensagens-->
+
+              <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+                  <h2>Dados recebidos</h2>
+                  <p>Nome: <?= htmlspecialchars($nome) ?></p>
+                  <p>Email: <?= htmlspecialchars($email) ?></p>
+                  <p>Telefone: <?= htmlspecialchars($telefone) ?></p>
+                  <p>CPF: <?= htmlspecialchars($cpf) ?></p>
+                  <p>Data: <?= htmlspecialchars($dataNascimento) ?></p>
+              <?php endif; ?>
+          
         </form>
     </div>
 
-    
-    <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
-        <h2>Dados recebidos</h2>
-        <p>Nome: <?= htmlspecialchars($nome) ?></p>
-        <p>Email: <?= htmlspecialchars($email) ?></p>
-        <p>Telefone: <?= htmlspecialchars($telefone) ?></p>
-        <p>CPF: <?= htmlspecialchars($cpf) ?></p>
-        <p>Data: <?= htmlspecialchars($dataNascimento) ?></p>
-    <?php endif; ?>
+  
 
     <script src="./js/main.js"></script> <!-- Main.js-->
     <div class="corner-link">
