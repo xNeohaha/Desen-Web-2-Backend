@@ -6,6 +6,25 @@ const input_cpf = document.getElementById('cpf'); // Input CPF
 const input_dataNascimento = document.getElementById('dataNascimento'); // Input DataNascimento
 const mensagem = document.getElementById('mensagem');
 
+form.addEventListener('submit', function (event) {
+    // NÃO BLOQUEIA O ENVIO
+    // event.preventDefault(); ← removido!
+
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    if (!nome || !email) {
+        mensagem.textContent = "Preencha os campos!";
+        mensagem.style.color = "red";
+
+        event.preventDefault(); // só bloqueia se tiver erro
+        return;
+    }
+
+    mensagem.textContent = "Enviando...";
+    mensagem.style.color = "green";
+});
+/*
 form.addEventListener('submit', function (event) { //Se algum botão do Formulário com a tag "submit" for pressionado, executa.
     event.preventDefault();  
     const untrimmedtelefone = input_telefone.value; // Telefone sem Formtação
@@ -38,6 +57,8 @@ form.addEventListener('submit', function (event) { //Se algum botão do Formulá
         `Dados cadastrados: \nNome: ${data.nome} \nEmail: ${data.email}\nTelefone: ${untrimmedtelefone}\nCPF: ${untrimmedcpf}\nData de Nascimento: ${data.dataNascimento}`); // Mensagem formatada
 }
 );
+
+
 /* reutilizado*/
 input_telefone.addEventListener('input', function () { // Formata o Telefone quando está sendo preenchido
     let numbers = input_telefone.value.replace(/\D/g, '');

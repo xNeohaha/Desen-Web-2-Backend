@@ -26,25 +26,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <h1>Cadastro</h1>
 
-        <form id="formCadastro"> <!-- Form do Cadastro -->
-            <input name="nome" placeholder="Nome completo"> <!-- Campo Nome -->
-            <input name="email" placeholder="Email"> <!-- Campo Email-->
-            <input name="telefone" placeholder="+55 Telefone"> <!-- Campo Telefone-->
-            <input name="cpf" placeholder="CPF">
-            <input name="date" id="dataNascimento">
-            <button type="submit">Enviar Cadastro</button> <!-- Enviar Dados para o JS.-->
-
-            <p id="mensagem"></p> <!-- Placeholder de Mensagens-->
+    <form method="POST" id="formCadastro"> <!-- Form do Cadastro -->
+          <input id="nome" name="nome" placeholder="Nome completo" required><br><br>
+          <input id="email" name="email" placeholder="Email" required><br><br>
+          <input id="telefone" name="telefone" placeholder="Telefone" required><br><br>
+          <input id="cpf" name="cpf" placeholder="CPF" required><br><br>
+          <input type="date" id="dataNascimento" name="dataNascimento" required><br><br>
+          <button type="submit">Enviar</button>
+          <p id="mensagem"></p> <!-- Placeholder de Mensagens-->
         </form>
     </div>
 
+    
     <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
-    <h2>Dados recebidos pelo servidor</h2>
-    <p><strong>Nome:</strong> <?php echo htmlspecialchars($nome); ?></p>
-    <p><strong>E-mail:</strong> <?php echo htmlspecialchars($email); ?></p>
-    <p><strong>Telefone:</strong> <?php echo htmlspecialchars($telefone); ?></p>
-    <p><strong>CPF:</strong> <?php echo htmlspecialchars($cpf); ?></p>
-    <p><strong>Data de Nascimento:</strong> <?php echo htmlspecialchars($dataNascimento); ?></p>
+        <h2>Dados recebidos</h2>
+        <p>Nome: <?= htmlspecialchars($nome) ?></p>
+        <p>Email: <?= htmlspecialchars($email) ?></p>
+        <p>Telefone: <?= htmlspecialchars($telefone) ?></p>
+        <p>CPF: <?= htmlspecialchars($cpf) ?></p>
+        <p>Data: <?= htmlspecialchars($dataNascimento) ?></p>
     <?php endif; ?>
 
     <script src="./js/main.js"></script> <!-- Main.js-->
