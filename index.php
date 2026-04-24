@@ -73,21 +73,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $dataNascimento
         ]);
 
-        if ($result) {
-            $mensagem = "Usuário cadastrado com sucesso!";
-            $tipoMensagem = "sucesso";
-            $sucesso = true;
+      if ($result) {
 
-            $nome = "";
-            $email = "";
-            $telefone = "";
-            $cpf = "";
-            $dataNascimento = "";
+    header("Location: index.php?sucesso=1");
+    exit;
 
-        } else {
-            $mensagem = "Erro ao salvar no banco.";
-            $tipoMensagem = "erro";
-        }
+} else {
+
+    $mensagem = "Erro ao salvar no banco.";
+    $tipoMensagem = "erro";
+
+}
 
     } else {
         $mensagem = implode("<br>", $erros);
